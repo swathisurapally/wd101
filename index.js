@@ -1,8 +1,8 @@
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    // Prevent the form from submitting
+    
     event.preventDefault();
 
-    // Get input values
+    
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
