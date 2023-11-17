@@ -1,27 +1,19 @@
-function nmValid(){
-	let n=document.getElementById("nm").value;
-	let nc=/^[a-zA-Z\" "\.]+$/;
-	if(nc.test(n)){
-		document.getElementById("nmerror").innerHTML="";
-	}
-	else
-		document.getElementById("nmerror").innerHTML="Invalid Name";
-}
-function passValid(){
-	let p=document.getElementById("p").value;
-	let pc=/^(\w|\&|\*|\$|\@|\!|\8){8,}$/;
-	if(pc.test(p)){
-		document.getElementById("passerror").innerHTML="";
-	}
-	else
-		document.getElementById("passerror").innerHTML="Atleast 8 characters";
-}
-function eValid(){
-	let e=document.getElementById("em").value;
-	let ec=/^[a-z0-9]\w*[a-z0-9]\@(gmail.com|email.com|cvr.ac.in)$/;
-	if(ec.test(e)){
-		document.getElementById("emailerror").innerHTML="";
-	}
-	else
-		document.getElementById("emailerror").innerHTML="Invalid Email";
-}
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    // Prevent the form from submitting
+    event.preventDefault();
+
+    // Get input values
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var dob = document.getElementById('dob').value;
+    var terms = document.getElementById('terms').checked;
+
+	document.getElementById("fg").innerHTML+=`<tr><td style="border:1px solid black ; border-collapse:collapse">${name}</td><td style="border:1px solid black ; border-collapse:collapse">${email}</td><td style="border:1px solid black ; border-collapse:collapse">${password}</td><td style="border:1px solid black ; border-collapse:collapse">${dob}</td><td style="border:1px solid black ; border-collapse:collapse">${terms ? 'Yes' : 'No'}</td></tr>`
+    
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('dob').value = '';
+    document.getElementById('terms').checked = false;
+});
