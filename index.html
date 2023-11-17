@@ -1,51 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-body{
-Background-color:antiquewhite;
-}
-h1{
-color:red;
-text-align:center;
-}
-.rm{
-Background-color:yellow;
-width:300px;
-margin-left:600px;
-margin-top:200px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
 </head>
-<body>
-<div class=rm>
-<h1>Registration form</h1>
-<form method=get action="RegisterServlet">
-<table align=center>
-<tr><td>UserName:</td><td><input type="text" id="nm" name="unm" onblur="nmValid()"><span id="nmerror"></span></td></tr>
-<tr><td>Password:</td><td><input type="password" id="p" name="pass" onblur="passValid()"><span id="passerror"></span></td></tr>
-<tr><td>Email:</td><td><input type="email" id="em" name="eid" onblur="eValid()"><span id="emailerror" ></span></td></tr>
-<tr><td>Gender:</td><td><input type="radio" name="Gender" value="Male">Male
-<input type="radio" name="Gender" value="Female">Female
-<input type="radio" name="Gender" value="Other">Other
-</td></tr>
-<tr><td>Age:</td><td>
-<label for="age">
-<select name="age">
-<option value="20">20</option>
-<option value="19">18</option>
+<body style="background-color:cadetblue; font-family:Arial ; text-align:center ; font-size:larger">
+    <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required="true">
+        <br>
+        <br>
+        <br>
 
-<option value="18">18</option>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required="true">
+        <br>
+        <br>
+        <br>
 
-</select>
-</label></td></tr>
-<tr><td colspan="1"></td><td><input type="submit" value="Register"></td></tr>
-</table>
-</form>
-</div>
-<p align=center>Already Have an account?<a href="Login.html">login</a></p>
-<script src="index.js"></script>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required="true">
+        <br>
+        <br>
+        <br>
+
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required="true">
+        <br>
+        <br>
+        <br>
+
+        
+        <label for="terms">Accepted terms?</label>
+        <input type="checkbox" id="terms" name="terms" required>
+
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    
+    <table id="dataTable" style="color:brown; margin-left:auto; margin-right:auto; margin-top:50px; border:1px solid black; border-collapse:collapse">
+        <thead style="border:1px solid black ;border-collapse:collapse">
+            <tr style="border:1px solid black ; border-collapse:collapse">
+                <td style="border:1px solid black">Name  </td>
+                <td style="border:1px solid black">Email </td>
+                <td style="border:1px solid black">Password </td>
+                <td style="border:1px solid black">Dob </td>
+                <td style="border:1px solid black">Accepted terms? </td>
+            </tr>
+        </thead>
+        <tbody id="fg">
+            
+        </tbody>
+    </table>
+
+    <script src="index.js"></script>
 </body>
 </html>
+
