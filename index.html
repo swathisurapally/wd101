@@ -1,54 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Registration Form</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    table {
-      background-color:aqua;
-      border-collapse: collapse;
-      width: 100%;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: DarkCyan;
     }
-    th, td {
-        font-family:arial;
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
+
+    .form-container {
+      width: 500px;
+      height: fit-content;
+      color: teal;
+    }
+
+    .form-container input,
+    .form-container checkbox {
+      border: 1px solid #20B2AA;
+    }
+
+    .form-label {
+      color: #20B2AA;
+    }
+
+    .input-field {
+      background-color: Azure;
+      border-color: #20B2AA;
+    }
+
+    .input-field:focus {
+      border-color: #BC8F8F;
+    }
+
+    .checkbox-field {
+      background-color: #20B2AA;
+    }
+
+    .submit-button {
+      background-color: #20B2AA;
+      color: #FFFFFF;
+    }
+
+    .submit-button:hover {
+      background-color: #20B2AA;
+    }
+
+    .entries-container {
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .entries-header {
+      color: #20B2AA;
+      font-weight: 600;
     }
   </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width:device-width; initial-scale:1.0">
 </head>
-<body style="background-color:cornflowerblue;font-family:bold;color:brown; text-align:center">
-  <h1>Registration Form</h1>
-  <form id="registrationForm">
-    <label for="name">Name:</label>
-    <input type="text" id="name" required><br><br>
-    
-    <label for="email">Email:</label>
-    <input type="email" id="email" required><br><br>
-    
-    <label for="password">Password:</label>
-    <input type="password" id="password" required><br><br>
-    
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" required><br><br>
-    
-    <label for="terms">Accepted terms?</label>
-    <input type="checkbox" id="terms" required><br><br>
-    
-    <button type="submit">Submit</button>
-  </form>
-  
-  <h2>Registered Users</h2>
-  <table id="userTable">
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Date of Birth</th>
-      <th>Accepted terms?</th>
-    </tr>
-  </table>
-  
-  <script src="index.js"></script>
+
+<body class="bg-DarkCyan-100 min-h-screen flex flex-col justify-center py-6">
+  <div class="mx-auto form-container bg-white shadow-lg rounded-lg p-8">
+    <h2 class="text-3xl text-center font-bold entries-header mb-4">
+      REGISTRATION FORM
+    </h2>
+    <form id="user-form" class="space-y-6">
+      <div>
+        <label for="name" class="block text-md font-medium form-label">
+          Name
+        </label>
+        <input required type="text" id="nm" name="name" class="input-field w-full p-2 rounded-md"
+          placeholder="Enter full name">
+      </div>
+
+      <div>
+        <label for="email" class="block text-md font-medium form-label">
+          Email
+        </label>
+        <input required type="email" id="em" name="email" class="input-field w-full p-2 rounded-md"
+          placeholder="Enter email address">
+      </div>
+
+      <div>
+        <label for="password" class="block text-md font-medium form-label">
+          Password
+        </label>
+        <input required type="password" id="p" name="password" class="input-field w-full p-2 rounded-md"
+          placeholder="Enter password">
+      </div>
+
+      <div>
+        <label for="dob" class="block text-md font-medium form-label">
+          Date of Birth
+        </label>
+        <input required type="date" id="dob" name="dob" class="input-field w-full p-2 rounded-md">
+      </div>
+
+      <div class="flex items-center">
+        <input required type="checkbox" id="acceptTerms" name="acceptTerms" class="checkbox-field">
+        <label for="acceptTerms" class="ml-2 block text-md font-medium form-label">
+          Accept Terms & Conditions
+        </label>
+      </div>
+
+      <p class="text-red-500 font-medium hidden" id="error"></p>
+      <button type="submit" class="submit-button py-2 px-4 rounded-md">
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <div class="mx-auto mt-5 entries-container p-8">
+    <h2 class="text-4xl text-center font-bold entries-header mb-2">
+      Entries
+    </h2>
+    <div class="divide-y divide-green-200/50" id="user-entries"></div>
+  </div>
+
+  <script src="./index.js"></script>
+
+
 </body>
+
 </html>
 
