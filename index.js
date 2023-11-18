@@ -1,67 +1,88 @@
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var dob = document.getElementById("dob").value;
-    var terms = document.getElementById("terms").checked;
-    
-    if (!validateEmail(email)) {
-      alert("Invalid email address!");
-      return;
+const current_date = new Date();
+const today_date = current_date.getDate();
+const today_month = current_date.getMonth() + 1;
+const today_year = current_date.getFullYear();
+
+const padZero = (num) => (num < 10 ? "0" + num : num);
+
+const minimum_date = `${today_year - 55}-${padZero(today_month)}-${padZero(
+  today_date
+)}`;
+const maximum_date = `${today_year - 18}-${padZero(today_month)}-${padZero(
+  today_date
+)}`;
+
+document.getElementById("dob").setAttribute("min", minimum_date);
+document.getElementById("dob").setAttribute("max", maximum_date);
+
+const formElement = document.getElementById("user-form");
+const entriesKey = "user-entries";
+
+const retrieveEntries = () => {
+  const storedEntries = JSON.parse(localStorage.getItem(entriesKey)) || [];
+  return storedEntries;
+};
+
+let userEntries = retrieveEntries();
+
+const displayEntries = () => {
+  const entries = retrieveEntries();
+  const tableRows = entries
+    .map((entry) => {
+      const cells = Object.values(entry).map(
+        (value) => `<td class='border border-green-700 px-4 py-2'>${value}</td>`
+      );
+      return `<tr>${cells.join("")}</tr>`;
+    })
+    .join("\n");
+
+  const table = `<table class="table-auto w-full">
+    <tr>
+      <th class="px-4 py-2">Name</th>
+      <th class="px-4 py-2">Email</th>
+      <th class="px-4 py-2">Password</th>
+      <th class="px-4 py-2">Dob</th>
+      <th class="px-4 py-2">Accepted terms?</th>
+    </tr>${tableRows}</table>`;
+
+  document.getElementById("user-entries").innerHTML = table;
+};
+
+const saveUserForm = (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("nm").value;
+  const email = document.getElementById("em").value;
+  const password = document.getElementById("p").value;
+  const dob = document.getElementById("dob").value;
+  const acceptedTermsAndConditions =
+    document.getElementById("acceptTerms").checked;
+
+  if (password.length < 8) {
+    document.getElementById("error").innerHTML =
+      "Password should be at least 8 characters";
+    document.getElementById("error").classList.remove("hidden");
+    document.getElementById("error").classList.add("visible");
+    return;
+  } else {
+    if (document.getElementById("error").classList.contains("visible")) {
+      document.getElementById("error").classList.remove("visible");
+      document.getElementById("error").classList.add("hidden");
     }
-    
-    var age = calculateAge(dob);
-    if (age < 18 || age > 55) {
-      alert("Age must be between 18 and 55!");
-      return;
-    }
-    
-    if (!terms) {
-      alert("Please accept the terms and conditions!");
-      return;
-    }
-    
-    addUserToTable(name, email, password, dob, terms);
-    saveDataToLocalStorage(name, email, password, dob, terms);
-    clearForm();
-  });
-  
-  function validateEmail(email) {
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const entry = {
+      name,
+      email,
+      password,
+      dob,
+      acceptedTermsAndConditions,
+    };
+
+    userEntries.push(entry);
+
+    localStorage.setItem(entriesKey, JSON.stringify(userEntries));
+    displayEntries();
   }
-  
-  function calculateAge(dob) {
-    var today = new Date();
-    var birthDate = new Date(dob);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var monthDiff = today.getMonth() - birthDate.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    
-    return age;
-  }
-  
-  function addUserToTable(name, email, password, dob, terms) {
-    var table = document.getElementById("userTable");
-    var row = table.insertRow(-1);
-    
-    var nameCell = row.insertCell(0);
-    nameCell.innerHTML = name;
-    
-    var emailCell = row.insertCell(1);
-    emailCell.innerHTML = email;
-    
-    var passwordCell = row.insertCell(2);
-    passwordCell.innerHTML = password;
-    
-    var dobCell = row.insertCell(3);
-    dobCell.innerHTML = dob;
-    
-    var termsCell = row.insertCell(4);
-    termsCell.innerHTML = terms ? "Yes" : "No";
-  }
+};
+
+formElement.addEventListener("submit", saveUserForm);
+displayEntries();
