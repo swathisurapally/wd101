@@ -51,9 +51,9 @@ const displayEntries = () => {
 const saveUserForm = (event) => {
   event.preventDefault();
 
-  const name = document.getElementById("nameforform").value;
-  const email = document.getElementById("emailforform").value;
-  const password = document.getElementById("passwordforform").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
   const dob = document.getElementById("dob").value;
   const acceptedTermsAndConditions =
     document.getElementById("acceptTerms").checked;
