@@ -38,11 +38,11 @@ const displayEntries = () => {
 
   const table = `<table class="table-auto w-full">
     <tr>
-      <th class="px-4 py-2">Name</th>
-      <th class="px-4 py-2">Email</th>
-      <th class="px-4 py-2">Password</th>
-      <th class="px-4 py-2">Dob</th>
-      <th class="px-4 py-2">Accepted terms?</th>
+      <th class=" px-4 py-2"; style="background-color:orange">Name</th>
+      <th class="px-4 py-2" ; style="background-color:red">Email</th>
+      <th class="px-4 py-2" ; style="background-color:pink">Password</th>
+      <th class="px-4 py-2"; style="background-color:purple">Dob</th>
+      <th class="px-4 py-2" ; style="background-color:green">Accepted terms?</th>
     </tr>${tableRows}</table>`;
 
   document.getElementById("user-entries").innerHTML = table;
@@ -51,9 +51,9 @@ const displayEntries = () => {
 const saveUserForm = (event) => {
   event.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const name = document.getElementById("nameforform").value;
+  const email = document.getElementById("emailforform").value;
+  const password = document.getElementById("passwordforform").value;
   const dob = document.getElementById("dob").value;
   const acceptedTermsAndConditions =
     document.getElementById("acceptTerms").checked;
