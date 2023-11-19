@@ -16,57 +16,57 @@
 
 <body class="bg-DarkCyan-100 min-h-screen flex flex-col justify-center py-6">
   <div class="mx-auto form-container bg-white shadow-lg rounded-lg p-8">
-    <h2 class="text-3xl text-center font-bold entries-header mb-4">
+    <h2 class="text-3xl text-center font-bold  mb-4">
       REGISTRATION FORM
     </h2>
     <form id="user-form" class="space-y-6">
       <div>
-        <label for="name" class="block text-large  form-label" style="color:rgb(116, 0, 139)  ;background-color:orange; font-family:'Courier New', Courier, monospace ;font:bold">
+        <label for="name" class="block text-large  " style="color:rgb(116, 0, 139)  ;background-color:orange; font-family:'Courier New', Courier, monospace ;font:bold">
           Name
         </label>
-        <input required type="text" id="nameforform" name="name" class="input-field w-full p-2 rounded-md"
+        <input required type="text" id="name" name="name" class="w-full p-2 rounded-md"
           placeholder="Enter full name">
       </div>
 
       <div>
-        <label for="email" class="block text-md font-medium form-label" style="color:blue ; background-color:aqua ; font-family:times new roman">
+        <label for="email" class="block text-md font-medium " style="color:blue ; background-color:aqua ; font-family:times new roman">
           Email
         </label>
-        <input required type="email" id="emailforform" name="email" class="input-field w-full p-2 rounded-md"
+        <input required type="email" id="email" name="email" class="w-full p-2 rounded-md"
           placeholder="Enter email address">
       </div>
 
       <div>
-        <label for="password" class="block text-md font-medium form-label" style="color:darkmagenta ; background-color:darksalmon">
+        <label for="password" class="block text-md font-medium " style="color:darkmagenta ; background-color:darksalmon">
           Password
         </label>
-        <input required type="password" id="passwordforform" name="password" class="input-field w-full p-2 rounded-md"
+        <input required type="password" id="password" name="password" class="w-full p-2 rounded-md"
           placeholder="Enter password">
       </div>
 
       <div>
-        <label for="dob" class="block text-md font-medium form-label">
+        <label for="dob" class="block text-md font-medium ">
           Date of Birth
         </label>
-        <input required type="date" id="dob" name="dob" class="input-field w-full p-2 rounded-md">
+        <input required type="date" id="dob" name="dob" class=" w-full p-2 rounded-md">
       </div>
 
       <div class="flex items-center">
         <input required type="checkbox" id="acceptTerms" name="acceptTerms" class="checkbox-field">
-        <label for="acceptTerms" class="ml-2 block text-md font-medium form-label" style="color:magenta ; background-color:lightblue">
+        <label for="acceptTerms" class="ml-2 block text-md font-medium " style="color:magenta ; background-color:lightblue">
           Accept Terms & Conditions
         </label>
       </div>
 
       <p class="text-red-500 font-medium hidden" id="error"></p>
-      <button type="submit" class="submit-button py-2 px-4 rounded-md">
+      <button type="submit" class="py-2 px-4 rounded-md">
         Submit
       </button>
     </form>
   </div>
 
-  <div class="mx-auto mt-5 entries-container p-8">
-    <h2 class="text-4xl text-center font-bold entries-header mb-2">
+  <div class="mx-auto mt-5  p-8">
+    <h2 class="text-4xl text-center font-bold  mb-2">
       Entries
     </h2 >
     <div class="divide-y divide-green-200/50" id="user-entries" ; style="background-color:aqua ; color:deeppink"></div>
